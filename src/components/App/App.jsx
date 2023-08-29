@@ -8,20 +8,10 @@ import './App.scss';
 import { useEffect } from 'react';
 
 export default function App() {
-  const storedContacts = localStorage.getItem('contacts');
-  const parsedContacts = JSON.parse(storedContacts);
-
   const [contacts, setContacts] = useState(() => {
-    return JSON.parse(storedContacts) ?? [];
+    return JSON.parse(localStorage.getItem('contacts')) ?? [];
   });
   const [filter, setFilter] = useState('');
-
-  //read from LS
-  useEffect(() => {
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
 
   //write to LS
   useEffect(() => {
